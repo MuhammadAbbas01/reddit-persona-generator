@@ -1,0 +1,4 @@
+praw
+python-dotenv
+nltk
+requests
