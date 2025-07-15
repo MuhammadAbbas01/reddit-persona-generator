@@ -1,16 +1,113 @@
-Reddit User Persona GeneratorThis project provides a Python script designed to extract public user data from Reddit profiles and synthesize it into detailed user personas. It combines advanced AI capabilities with robust engineering principles to deliver insightful analysis and ensure reliable operation.Key Strengths & Engineering PrinciplesThis project demonstrates a critical blend of advanced AI application and real-world software engineering resilience:Advanced AI-Driven Insights: Utilizes Large Language Models (LLMs) to generate deep, nuanced, and specifically cited inferences for user demographics, personality traits, and motivations, providing a rich understanding of user behavior.Robustness and Resilient Design: Engineered to operate reliably even when external LLM APIs are unavailable due to rate limits or quota issues. The system features a sophisticated fallback mechanism that ensures a complete and valuable persona is always generated through intelligent rule-based analysis, demonstrating critical real-world application stability.Comprehensive Data Analysis Pipeline: Integrates efficient Reddit data scraping, detailed activity pattern analysis, dynamic interest categorization, and sentiment analysis to provide a holistic view of user profiles.Clear, Citable Output: Produces well-structured persona reports in a human-readable format, with all inferences backed by specific citations (including Reddit post/comment IDs) for transparency and credibility.FeaturesReddit Data Scraping: Efficiently extracts posts and comments from any specified public Reddit user profile (configurable limits for depth).User Activity Analysis: Calculates account age, total content, average daily activity, and peak engagement hours (UTC).Dynamic Interest Categorization: Identifies top subreddits and categorizes user interests into broader themes based on their content and community participation.Sentiment Analysis: Determines the overall emotional tone of user communications.Hybrid Persona Generation Engine:Primary Mode: Attempts to use the configured LLM (Google Gemini in this version) for rich, detailed inferences across all persona attributes.Fallback Mode: Activates an advanced rule-based system if LLM calls fail, ensuring a comprehensive persona is still generated.Detailed Output Format: Produces structured text files with clearly labeled sections and granular citations for all inferred characteristics.Technical Challenges & SolutionsA significant aspect of this project's development involved confronting the inherent unreliability of free/trial tiers of Large Language Model (LLM) APIs. Services like Google Gemini can impose strict rate limits and encounter quota exhaustion, leading to inconsistent availability.To ensure continuous operation and a consistent user experience, the system was designed with a multi-layered approach:Primary LLM Integration: The application first attempts to leverage LLMs for their superior inferential capabilities, aiming for the most detailed persona possible.Intelligent Fallback Mechanism: In instances where LLM API calls fail (e.g., due to 429 Too Many Requests or insufficient_quota errors), the system gracefully switches to an enhanced rule-based analysis. This fallback is designed to provide the most specific possible insights using only scraped data, preventing application failure and ensuring a complete persona report is always delivered.This design philosophy highlights the project's focus on building robust, production-ready software that can effectively manage external dependencies and deliver value under varying conditions.Setup and InstallationClone the Repository (or download the script):git clone https://github.com/your_github_username/reddit-persona-generator.git # Replace with your actual repo URL
+# Reddit User Persona Generator
+
+This project provides a Python script designed to extract public user data from Reddit profiles and synthesize it into detailed user personas. It combines advanced AI capabilities with robust engineering principles to deliver insightful analysis and ensure reliable operation.
+
+## Key Strengths & Engineering Principles
+
+This project demonstrates a critical blend of advanced AI application and real-world software engineering resilience:
+
+**Advanced AI-Driven Insights:** Utilizes Large Language Models (LLMs) to generate deep, nuanced, and specifically cited inferences for user demographics, personality traits, and motivations, providing a rich understanding of user behavior.
+
+**Robustness and Resilient Design:** Engineered to operate reliably even when external LLM APIs are unavailable due to rate limits or quota issues. The system features a sophisticated fallback mechanism that ensures a complete and valuable persona is always generated through intelligent rule-based analysis, demonstrating critical real-world application stability.
+
+**Comprehensive Data Analysis Pipeline:** Integrates efficient Reddit data scraping, detailed activity pattern analysis, dynamic interest categorization, and sentiment analysis to provide a holistic view of user profiles.
+
+**Clear, Citable Output:** Produces well-structured persona reports in a human-readable format, with all inferences backed by specific citations (including Reddit post/comment IDs) for transparency and credibility.
+
+## Features
+
+- **Reddit Data Scraping:** Efficiently extracts posts and comments from any specified public Reddit user profile (configurable limits for depth).
+- **User Activity Analysis:** Calculates account age, total content, average daily activity, and peak engagement hours (UTC).
+- **Dynamic Interest Categorization:** Identifies top subreddits and categorizes user interests into broader themes based on their content and community participation.
+- **Sentiment Analysis:** Determines the overall emotional tone of user communications.
+- **Hybrid Persona Generation Engine:**
+  - **Primary Mode:** Attempts to use the configured LLM (Google Gemini in this version) for rich, detailed inferences across all persona attributes.
+  - **Fallback Mode:** Activates an advanced rule-based system if LLM calls fail, ensuring a comprehensive persona is still generated.
+- **Detailed Output Format:** Produces structured text files with clearly labeled sections and granular citations for all inferred characteristics.
+
+## Technical Challenges & Solutions
+
+A significant aspect of this project's development involved confronting the inherent unreliability of free/trial tiers of Large Language Model (LLM) APIs. Services like Google Gemini can impose strict rate limits and encounter quota exhaustion, leading to inconsistent availability.
+
+To ensure continuous operation and a consistent user experience, the system was designed with a multi-layered approach:
+
+**Primary LLM Integration:** The application first attempts to leverage LLMs for their superior inferential capabilities, aiming for the most detailed persona possible.
+
+**Intelligent Fallback Mechanism:** In instances where LLM API calls fail (e.g., due to 429 Too Many Requests or insufficient_quota errors), the system gracefully switches to an enhanced rule-based analysis. This fallback is designed to provide the most specific possible insights using only scraped data, preventing application failure and ensuring a complete persona report is always delivered.
+
+This design philosophy highlights the project's focus on building robust, production-ready software that can effectively manage external dependencies and deliver value under varying conditions.
+
+## Setup and Installation
+
+### Clone the Repository (or download the script):
+```bash
+git clone https://github.com/your_github_username/reddit-persona-generator.git # Replace with your actual repo URL
 # Or simply download reddit_persona_generator.py and .env file
-(If you downloaded manually, navigate to your D:\Desktop\Persona folder.)Create a Python Virtual Environment (Recommended):python -m venv venv_persona
-Activate the Virtual Environment:On Windows:.\venv_persona\Scripts\activate
-On macOS/Linux:source venv_persona/bin/activate
-(Your command prompt should now show (venv_persona) at the beginning.)Install Required Libraries:python -m pip install praw nltk requests python-dotenv
-Configure API Keys in .env file:Create a file named .env in the root of your project directory (e.g., D:\Desktop\Persona\.env).Obtain your API keys:Reddit API Keys: Go to https://www.reddit.com/prefs/apps, create a "script" type app, and get your client_id and client_secret.Google Gemini API Key: Go to Google AI Studio to generate a GEMINI_API_KEY.Add your keys to the .env file like this (replace placeholders with your actual keys):REDDIT_CLIENT_ID="NmeoSk4Eo4jPCSXI8SZdtg"
+```
+(If you downloaded manually, navigate to your D:\Desktop\Persona folder.)
+
+### Create a Python Virtual Environment (Recommended):
+```bash
+python -m venv venv_persona
+```
+
+### Activate the Virtual Environment:
+**On Windows:**
+```bash
+.\venv_persona\Scripts\activate
+```
+
+**On macOS/Linux:**
+```bash
+source venv_persona/bin/activate
+```
+(Your command prompt should now show (venv_persona) at the beginning.)
+
+### Install Required Libraries:
+```bash
+python -m pip install praw nltk requests python-dotenv
+```
+
+### Configure API Keys in .env file:
+
+1. Create a file named `.env` in the root of your project directory (e.g., `D:\Desktop\Persona\.env`).
+
+2. Obtain your API keys:
+   - **Reddit API Keys:** Go to https://www.reddit.com/prefs/apps, create a "script" type app, and get your `client_id` and `client_secret`.
+   - **Google Gemini API Key:** Go to Google AI Studio to generate a `GEMINI_API_KEY`.
+
+3. Add your keys to the `.env` file like this (replace placeholders with your actual keys):
+```
+REDDIT_CLIENT_ID="NmeoSk4Eo4jPCSXI8SZdtg"
 REDDIT_CLIENT_SECRET="6B2Iy-si-kvMQ-efVPSwu7GtTbMFlA"
 GEMINI_API_KEY="AIzaSyBkDU9KWiuGz8HluTglS9CpjpiFKBk85is"
-Save the .env file.UsageRun the script from your activated virtual environment, providing a Reddit profile URL and an output filename:python reddit_persona_generator.py <reddit_profile_url> --output <output_filename.txt>
-Examples:python reddit_persona_generator.py https://www.reddit.com/user/kojied/ --output kojied_persona.txt
+```
+
+4. Save the `.env` file.
+
+## Usage
+
+Run the script from your activated virtual environment, providing a Reddit profile URL and an output filename:
+
+```bash
+python reddit_persona_generator.py <reddit_profile_url> --output <output_filename.txt>
+```
+
+### Examples:
+```bash
+python reddit_persona_generator.py https://www.reddit.com/user/kojied/ --output kojied_persona.txt
 python reddit_persona_generator.py https://www.reddit.com/user/gallowboob/ --output gallowboob_persona.txt
-Sample OutputsThe script generates a comprehensive text file for each user. Below are snippets demonstrating both the full AI-powered output and the robust fallback:Example 1: Full AI-Powered Persona (from kojied_persona.txt)(This output demonstrates the project's full AI capability when the LLM API is successfully accessed.)============================================================
+```
+
+## Sample Outputs
+
+The script generates a comprehensive text file for each user. Below are snippets demonstrating both the full AI-powered output and the robust fallback:
+
+### Example 1: Full AI-Powered Persona (from kojied_persona.txt)
+(This output demonstrates the project's full AI capability when the LLM API is successfully accessed.)
+
+```
+============================================================
 REDDIT USER PERSONA ANALYSIS REPORT
 ============================================================
 
@@ -21,38 +118,55 @@ Quote: "An engaged Reddit user, exploring various communities."
 DEMOGRAPHICS:
 --------------------
 Age Range: 25-35 years old, likely GenZ or Millennial leaning towards the latter based on subreddit activity and references to childhood movies. Comments in r/GenZ suggest some familiarity and interaction with that age group, but the depth of knowledge and perspective suggest being slightly older, bordering on the Millennial generation. Also seen in comment t1_t1_mv2xf3q referencing the spending habits of millenials. Also, post in t3_t3_1erotgn about movies best representing childhoods points to user being Gen Z leaning towards Millenial generations. Can be further inferred from One Piece interest as well as interest in ESG investing in t3_t3_15xgmea which makes the user more socially aware of their actions, pointing to the user being in the mid to late 20s range at least. Also, comment in t1_t1_m454yr1 referencing finding a better life in the US may also point towards later age range due to the nature of being an immigrant in the US and finding work/life balance here through H1B work status and similar situations to gain access to opportunities within the US borders. Comment t1_t1_m49vhkh in r/LeopardsAteMyFace also suggests familiarity with H1B visas and experience with the job market indicating the user is most likely in the later stages of career planning and development. Also, the user posting in r/VisionPro suggests the user has the means to afford the device which would more realistically point towards an older age range where more capital has been accumulated to fund purchases such as the Vision Pro, and also the technical literacy required to set it up indicates that the user is familiar and tech savvy in newer technologies. Finally, the post regarding the bar with 
+
 Location: New York City, given participation in AskNYC and FoodNYC subreddits. Also posts in r/NYCbike may indicate that the user is biking around the city from time to time, as seen in post t3_t3_16n85uj. Additional comments in t1_t1_m4j0ese referencing Washington square park and surrounding areas also may point to the user frequenting this area and being very familiar with the city. Further evidence is that the user also posted in t3_t3_1lykkqf also mentioning that their bar is close to home, technically in a different neighborhood in general. Posts in r/nycrail also point to the user knowing a great deal about the NYC transit system and being familiar with the surrounding areas within NYC, as seen in t1_t1_m1qihqd indicating the user's involvement in the city transit system on a regular basis. Finally, comments such as t1_t1_mxxhvpf referencing breakfast spots to drinks spots in NYC points towards the user being an active customer/patron of NYC vendors and services, adding validity to the user's location in NYC. Also, posts in t3_t3_166ksv7 relating to bike lyfts point to the user's ability to ride bikes and be located in NYC. Also, the comment in t1_t1_lyyqsop references the coach USA bus to penn station, also further implying that the user frequents NYC travel areas. Finally, the comment in t1_t1_lzfhgsj where the user references Johns and Bleecker (streets) also further implies that the user has been around that area and frequents it, further cementing the fact that the user is very familiar with NYC, and spends a great amount of time in the city on a regular basis, whether it be for leisure or for business. This all leads to the conclusion that the user resides in the NYC area and is very familiar with it, which is very relevant to all their posts. Also, the user making plans to visit a friend in t1_t1_mt02ziy further pushes the idea of the user living in NYC. Finally, posts such as t3_t3_16n85uj and t3_t3_166ksv7 are indicative of the user having involvement with NYC transportation. Overall this concludes that the user resides in NYC.
+
 Occupation: Likely works in a tech-related field, possibly software development or engineering. References to VisionPro development (t3_t3_1b3yugb), ChatGPT (t3_t3_1alf7av, t1_t1_ml31o85), and mentions of GCP credits (t1_t1_m14y4pr) suggest technical expertise. Also the posts in r/ChatGPT and related comments such as t1_t1_lk3evig, and t1_t1_lk3t9ry may suggest involvement in AI-driven technologies that impact their work. Also, discussion of H1B visas in t3_t3_1hnx8j0 and t3_t3_1hnx7lj may also imply the user has experienced or is going through the process of procuring such a visa for tech work. The user also actively monitors and participates in various technical development projects such as the Vision Pro as seen in posts t3_t3_1b4yi15, t3_t3_1b3yugb, t3_t3_1b36n83, t3_t3_1alx270, t3_t3_1alf7av, t3_t3_1aiwqa2 all indicate that the user is a very technical individual with the means and ability to understand the latest technologies. Also, their contributions to the developer community as seen in t1_t1_lmzzlrm with comments saying "I appreciate you guys continuing to build this despite the current situation. Please keep it coming!" also further shows that the user is invested and aware of technology and it's impacts on all industries around them. Overall the user's expertise and level of involvement in technical and AI driven subreddits shows that the user is an engineer or developer, or at the very least very involved in AI technologies from a technical perspective. Finally, the reference to GCP credits may indicate that the user is involved in cloud-driven programming.
 
 PERSONALITY TRAITS:
 --------------------
 • Inquisitive and Analytical minded. They tend to ask questions and gather information before forming an opinion or making a decision, as seen in posts in AskReddit regarding H1B workers and how they feel about exploitation and other questions. Also, their activity in r/ChatGPT points to a willingness to try out new things, and their questions also further indicate their inquisitive nature. Also, his investment mindset points to the fact that the user makes calculated decisions and is always looking forward to solving problems or coming up with new ideas for development as seen in r/ChatGPT, r/VisionPro and other subreddits related to problem solving or technology. This would point to the user being a very logical individual, and also being an engineer supports that conclusion, pointing to this user being a calculated, and logical individual who is well aware of their surroundings and is very capable in their field. Additionally, the user asks very thoughtful questions to other people, indicating that the user is very keen on getting a perspective before formulating their own opinions, which further points to a calculating and inquisitive individual. Also, posting in r/askreddit often implies that the user enjoys answering questions and helping people that they feel they can answer based on their experiences or beliefs. The user also is very thoughtful of others' questions and asks thoughtful questions back in return. A great example is in t1_t1_n2b07h0. Also, we can see a great deal of inquisitiveness when the user posts "Incredible stuff! How did you maintain character consistency? Did you generate a consistent character image and then use the image-to-video feature?..." also pointing to their inquisitiveness. Finally, the user posts in t3_t3_15szxcx asking "is there a way to develop a mental mo..." which indicates the user asks thoughtful questions and is trying to gain a greater understanding of the things that they believe they can optimize in their daily life to make their life more optimized overall. Their activity in Civ5 subreddits may also further point to the users' calculating and analytical mindset since that game also requires the user to think long and hard about strategic plays.
+
 • Tech-Savvy and Early Adopter. Active in subreddits like VisionPro, ChatGPT, and aivideo suggests interest in cutting-edge technology and AI. Posts in VisionPro indicate genuine interest in futuristic technology and innovation. Also activity in r/ChatGPT indicates the user is keeping up to date with the latest releases from ChatGPT and other new software releases, and asking thoughtful questions and giving advice to other people within the industry (related to their technical knowledge). Further, their activity in r/ManorLords also indicates that they are tech savvy to enjoy the city builder game, indicating they are well versed in current technology trends. Also, the fact that they posted in t1_t1_mezpeha referencing the game Project Zomboid is a niche fact in gaming that requires more than simple technical knowledge to be aware of the technical specs. Overall this leads to the fact that this user enjoys pushing the cutting edge technology and gaming standards overall and is very knowledgeable. The user is also knowledgeable and very involved in the latest trends in tech, and gaming alike, allowing the conclusion that the user is an early adopter of technology. A great example of this is the post t3_t3_1ajbkqm in the Vision Pro subreddit discussing PokemonGo within the AVP. A final example is the fact that the user posted in t3_t3_1b3yugb asking about resources for VisionOS development further highlighting their involvement in the ecosystem overall and solidifying their early adopter claim.
+
 • Interested in self-improvement and Socially Aware. The user posts in subreddits like Frugal and ClimateOffensive. They are willing to learn new techniques in order to optimize their lives and also give back to the community. Their involvement in these subreddits indicates that they are very interested in their daily impacts on the world and are trying to make a change in a positive direction. They want to do better and be better to others in the world. This is exemplified in posts such as t3_t3_15xgmea that discusses ESG ratings for various ESG companies and may point towards the user being a firm believer that it's important to track ESG for each company and to do good for the climate. Additionally, their post in t3_t3_15szxcx points to the idea of wanting to spend less and be frugal overall. Finally, they also comment on t1_t1_m454yr1 indicating a socially aware attitude in that they are commenting on the dynamics of those with wealth vs those less fortunate. This all points to the user being invested and caring about societal dynamics as a whole.
+
 • Observant and Perceptive. Able to pick up on nuances and inconsistencies, as seen in comments about NBA refs (t3_t3_1hcopxo) and observations in One Piece (t1_t1_m4a6r4s). Also, their ability to make insightful observations in various scenarios indicates a keen eye for detail, exemplified by the comment t1_t1_lx3tz1r in r/warriors, showing perceptiveness. Also, their posts such as t1_t1_m45hfw5 shows that the user is very aware of the disappointment from the Golden State Warriors. Also, they also post in t1_t1_m4dbpn9 indicating knowledge about Civ5 and the balancing aspect of gameplay. This all leads to the conclusion that the user is not only observant but also perceptive in many aspects of their lives. Also, the poster clearly displays their knowledge of Japanese culture and language as seen in t1_t1_mswlma6, indicating a perceptive and understanding view of the nuances of the culture and the ways to express things.
 
 INTERESTS AND HOBBIES:
 --------------------
 • Technology, including VR/AR (VisionPro), AI (ChatGPT), and general tech trends. Also see activity in r/aivideo which points to technology as a whole being their primary driving factor and interest in their life overall. Additionally, the Vision Pro posts point to the fact that the user has a high interest in the latest technology releases.
+
 • Gaming, particularly strategy games like Civ5 and Project Zomboid, indicating an interest in complex systems and problem-solving as seen in posts such as t3_t3_13dwl0i, t1_t1_m0lub7c, t1_t1_m0jx8h5, t1_t1_mk73w0o and many other posts. Furthermore, they are very knowledgeable about the game as seen in t1_t1_m4dc5oo.
+
 • Sports, specifically basketball (Golden State Warriors), suggesting interest in team dynamics and competition, also see posts suchs as t3_t3_1hcopxo where the user is following the NBA very closely.
+
 • Urban Lifestyle, including exploring NYC (AskNYC, FoodNYC, NYCbike) and related urban activities. Furthermore, posts such as t3_t3_16n85uj, t3_t3_166ksv7 points to the fact that the user likes to engage in urban activities such as bike riding and other forms of urban transportation.
+
 • Financial Awareness, shown by activity in Frugal, stocks, options, and wallstreetbets, hinting at interest in personal finance and investing. Furthermore, posts such as t3_t3_flf90r, t3_t3_fk6aya, t3_t3_fiflte and t3_t3_fhp5ae. Also, the user seems to have a moderate understanding of the investing and financial landscape, further solidifying this conclusion.
+
 • Entertainment, including anime/manga (OnePiece), suggesting an appreciation for storytelling and Japanese culture. Additionally the comments in t1_t1_mswlma6, t1_t1_m4a6r4s and many other comments in the subreddit points to the user being active in participating within the One Piece and manga community overall.
+
 • Gardening and Plants, seen in plantclinic, indicating an interest in nature and nurturing. Furthermore, their posts such as t3_t3_16tj525, t3_t3_16dlrdq and t3_t3_15pvycv points to their involvement in plant based subreddits and wanting to learn about optimizing their plant based care regimens.
 
 GOALS AND MOTIVATIONS:
 --------------------
 • Staying Informed and Up-to-Date. Actively seeks information about technology, current events, and financial markets. They are constantly looking to be ahead of the curve in order to improve and optimize their lifestyle and investing habits to plan for the future. Furthermore, this is validated by the vast amount of data they subscribe to as described above.
+
 • Improving Personal Finances. Exploring frugal living, investment strategies, and financial awareness. As seen in r/Frugal, the user asks questions and participates in discussions. This is because the user wants to better their future and be better financially.
+
 • Contributing to Communities. Shares insights and seeks advice within various online communities. This indicates that the user has a drive to help others learn, and they are willing to share their expertise when they are able to provide value in their opinion. Overall, this suggests the user is a valuable member of online communities and likes to help other users in the community flourish.
+
 • Exploring New Technologies. Eager to try and learn about new tech like VisionPro and ChatGPT. The user wants to be involved in the cutting edge of technology, and likes to participate in these kinds of niche technological conversations that will drive the next evolution in future technology. Furthermore, his goal may be to become an entrepreneur one day as seen in his technological prowess and inquisitiveness, which would point to the user becoming a technology mogul in the long run.
 
 PAIN POINTS AND CHALLENGES:
 --------------------
 • Disappointment with Established Systems. Expresses frustration with issues like health insurance claim denials (t1_t1_m14jlnj). This is due to the user's inability to control the established system due to bureaucracy or other factors, causing pain points for the user.
+
 • Ethical Concerns. Shows concern about climate change and social inequality (t3_t3_15xgmea, t1_t1_m454yr1). This may be due to the helplessness that the user feels when thinking about some of these topics that they feel are out of their control, but are important societal problems that can hopefully be solved.
+
 • Balancing Costs and Benefits. Struggles with deciding what to buy and what to forgo (t3_t3_15szxcx), indicating financial constraints or a desire for frugality. The user also wants to make sure they are thinking about what they can do to optimize their life and avoid issues that would cause financial problems overall.
+
 • Limited Battery Life of New Technologies. Expresses concern with the VisionPro's battery life being too short (t1_t1_ly658s7) indicating that this new technology is far from perfect and still has many things to overcome.
 
 COMMUNICATION STYLE:
@@ -66,76 +180,82 @@ Description: Active user with a moderate posting frequency. Engages in a variety
 BRAND PREFERENCES:
 --------------------
 • Apple (VisionPro), suggests preference for innovative technology and premium products. Also, their knowledge base in Apple product development as seen in t3_t3_1b3yugb further suggests that the user is closely following the apple ecosystem and is waiting for their next technology advancements. Furthermore, the user actively participates and keeps up to date with the Vision Pro platform, as seen in many other posts referencing the VisionPro device and updates, suggesting high brand loyalty.
+
 • Lyft (NYCbike), if using their bike service, indicates reliance on urban transportation solutions. Furthermore, posts such as t3_t3_166ksv7 and t3_t3_16n85uj indicates knowledge about biking in the NYC area.
+
 • Robinhood/Webull (stocks), suggests familiarity with online brokerage platforms, though potentially dissatisfied with Robinhood due to transfer issues (t3_t3_flf90r). However, their transfer issues does not discount the fact that the user makes regular transactions and understands the processes on the brokerage, which would show a high level of aptitude.
 
 CONTENT PREFERENCES:
 --------------------
 • Informative content: Seeks information about technology, finance, and current events, as seen in their subreddit subscriptions. This also means that the user has great knowledge and skills that they may be willing to share with other users.
+
 • Community-driven content: Participates in discussions and Q&A in AskReddit and other subreddits. This is most likely due to the fact that the user would like to help other community members grow, in that the user feels they can provide value to the user and would like to guide and mentor them to improve their lifestyles overall.
+
 • Visual content: Expresses interest in 3D maps and 360˚ videos (t3_t3_1b4yi15), and AI generated video (t1_t1_m4aby21, t1_t1_mk4no36) indicating an interest in immersive experiences. Furthermore, their involvement in technology likely indicates that they enjoy new innovative experiences overall and will likely drive the next generation of technological innovation overall.
+
 • Problem-solving content: Engages with strategy games (Civ5, Project Zomboid) and seeks solutions to technical issues (VisionPro development). Their involvement in strategy games indicates that they have a keen mind for strategic thinking. In the game of Civ5, it is often the case that one needs to think 10 steps ahead of the AI in order to win in the game, which may explain the user's ability to do so, because they are a critical thinker with a great mental state to tackle the complex problems that this kind of game brings.
 
 ANALYSIS SUMMARY (For Debugging/Internal Context):
 --------------------
 {
-  "activity": {
-    "total_posts": 31,
-    "total_comments": 100,
-    "avg_posts_per_day": 0.06,
-    "most_active_hours": [
-      [
-        8,
-        16
-      ],
-      [
-        19,
-        10
-      ],
-      [
-        10,
-        10
-      ]
-    ],
-    "account_age_days": 2020,
-    "karma": {
-      "post": 216,
-      "comment": 1823
-    }
-  },
-  "interests": {
-    "top_subreddits": [
-      "AskReddit",
-      "civ5",
-      "AskNYC",
-      "VisionPro",
-      "ManorLords",
-      "warriors",
-      "OnePiece",
-      "ChatGPT",
-      "GenZ",
-      "FoodNYC"
-    ],
-    "interest_categories": [
-      "Entertainment",
-      "News & Current Events",
-      "Technology",
-      "Educational & Learning",
-      "Sports",
-      "Gaming",
-      "Social & Community",
-      "Lifestyle",
-      "Humor & Memes"
-    ],
-    "total_subreddits": 20
-  },
-  "sentiment": {
-    "overall_sentiment": "positive",
-    "sentiment_scores": {
-      "pos": 0.0985234899328859,
-      "neg": 0.06598657718120805,
-      "neu": 0.8354563758389262,
-      "compound": 0.10998053691275168
-    }
-  }
+  "activity": {
+    "total_posts": 31,
+    "total_comments": 100,
+    "avg_posts_per_day": 0.06,
+    "most_active_hours": [
+      [
+        8,
+        16
+      ],
+      [
+        19,
+        10
+      ],
+      [
+        10,
+        10
+      ]
+    ],
+    "account_age_days": 2020,
+    "karma": {
+      "post": 216,
+      "comment": 1823
+    }
+  },
+  "interests": {
+    "top_subreddits": [
+      "AskReddit",
+      "civ5",
+      "AskNYC",
+      "VisionPro",
+      "ManorLords",
+      "warriors",
+      "OnePiece",
+      "ChatGPT",
+      "GenZ",
+      "FoodNYC"
+    ],
+    "interest_categories": [
+      "Entertainment",
+      "News & Current Events",
+      "Technology",
+      "Educational & Learning",
+      "Sports",
+      "Gaming",
+      "Social & Community",
+      "Lifestyle",
+      "Humor & Memes"
+    ],
+    "total_subreddits": 20
+  },
+  "sentiment": {
+    "overall_sentiment": "positive",
+    "sentiment_scores": {
+      "pos": 0.0985234899328859,
+      "neg": 0.06598657718120805,
+      "neu": 0.8354563758389262,
+      "compound": 0.10998053691275168
+    }
+  }
 }
+```
